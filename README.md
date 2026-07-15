@@ -4,6 +4,9 @@
 [![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-green)](https://fastapi.tiangolo.com)
 [![Deployed on Render](https://img.shields.io/badge/Deployed-Render-purple)](https://render.com)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-https://docguard-agent.onrender.com-brightgreen)](https://docguard-agent.onrender.com)
+
+🌐 **Live Demo:** [https://docguard-agent.onrender.com](https://docguard-agent.onrender.com)
 
 DocGuard is an **AI agent** that acts as a guardian for your data pipelines. It automatically validates code and documentation against your **DataHub metadata**—catching issues before they break your production systems.
 
@@ -25,6 +28,11 @@ Data teams spend up to **30% of their time** fixing broken pipelines caused by:
     -   **Linter Agent**: Flags unknown tables, `SELECT *` queries, and `DELETE` without `WHERE`.
     -   **Doc Validator Agent**: Checks for missing documentation sections and deprecated terms.
 5.  **DocGuard posts a comment** on your PR with a detailed report and actionable suggestions.
+
+## 🖼️ Demo
+
+![DocGuard in action on a Pull Request](images/docguard-pr-comment.png)
+*DocGuard automatically comments on PRs with a detailed report of issues found.*
 
 ## ✨ Features
 
@@ -130,6 +138,23 @@ Run the test suite to ensure everything is working:
 ```bash
 pytest tests/ -v
 ```
+
+## 🧪 Try It Yourself
+
+1. **Fork this repo and clone it locally.**
+2. **Spin up DataHub locally:**
+   ```bash
+   pip install acryl-datahub
+   datahub docker quickstart
+   ```
+3. **Set up environment variables in a .env file.**
+4. **Run the app:**
+     ```bash
+     uvicorn src.main:app --reload
+     ```
+5. **Open a Pull Request in your GitHub repo and watch DocGuard comment!**
+
+*Live Demo URL: https://docguard-agent.onrender.com*
 
 ## 📄 License
 
