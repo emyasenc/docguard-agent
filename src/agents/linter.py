@@ -97,19 +97,22 @@ class LinterAgent(BaseAgent):
     def _check_sql_syntax(self, code: str) -> List[Dict[str, Any]]:
         """Check for common SQL issues."""
         issues = []
-        
-        # Check for DELETE without WHERE
-        if "DELETE FROM" in code.upper() and "WHERE" not in code.upper():
+    
+        # Convert to uppercase for case-insensitive matching
+        code_upper = code.upper()
+    
+        # Check for DELETE without WHERE (multi-line safe)
+        if "DELETE FROM" in code_upper and "WHERE" not in code_upper:
             issues.append({
-                "type": "MISSING_WHERE",
-                "message": "DELETE statement without WHERE clause detected.",
-                "suggestion": "Add a WHERE clause to prevent accidental data loss.",
-                "severity": "critical",
-                "location": code.find("DELETE FROM")
-            })
-        
-        # Check for SELECT *
-        if "SELECT *" in code.upper():
+            "type": "MISSING_WHERE",
+            "message": "DELETE statement without WHERE clause detected.",
+            "suggestion": "Add a WHERE clause to prevent accidental data loss.",
+            "severity": "critical",
+            "location": code.find("DELETE FROM")
+        })
+    
+        # Check for SELECT * (multi-line safe)
+        if "SELECT *" in code_upper:
             issues.append({
                 "type": "SELECT_STAR",
                 "message": "SELECT * detected. This can cause performance issues.",
@@ -117,8 +120,8 @@ class LinterAgent(BaseAgent):
                 "severity": "medium",
                 "location": code.find("SELECT *")
             })
-        
-        return issues
+    
+            return issues
     
     def _check_imports(self, code: str) -> List[Dict[str, Any]]:
         """Check for deprecated or problematic imports."""
