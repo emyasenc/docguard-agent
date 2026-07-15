@@ -19,7 +19,8 @@ class DataHubClient:
         self.token = settings.DATAHUB_TOKEN
         self.headers = {
             "Authorization": f"Bearer {self.token}",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "ngrok-skip-browser-warning": "true"
         }
         logger.info(f"✅ DataHub client initialized for {self.endpoint}")
     
