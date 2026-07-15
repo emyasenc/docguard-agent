@@ -16,6 +16,6 @@ async def health_check():
         "status": "healthy",
         "service": settings.APP_NAME,
         "version": settings.APP_VERSION,
-        "timestamp": datetime.now(timezone.UTC).isoformat(),
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "environment": settings.ENVIRONMENT
     }
